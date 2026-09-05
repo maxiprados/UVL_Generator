@@ -64,7 +64,7 @@ python server.py
 
 Si la ejecución es correcta, la terminal quedará en escucha mostrando el mensaje: `Iniciando servidor MCP de UVL...`.
 
-
+Para detener la ejecución se debe pausar el proceso de la terminal, usando por ejemplo, el atajo de teclado `CTRL + C`
 
 ---
 
