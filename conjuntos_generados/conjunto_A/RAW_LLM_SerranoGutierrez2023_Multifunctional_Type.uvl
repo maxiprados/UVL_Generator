@@ -1,0 +1,30 @@
+namespace Multifunctional
+
+features
+    Multifunctional
+        mandatory
+            Printer
+                mandatory
+                    PrinterType
+                        alternative
+                            BWPrinter
+                            ColorPrinter
+                            PhotoPrinter
+                    Cartridge [1..4]
+                        mandatory
+                            InkVolume {Integer}
+                    PrinterResolution {Integer}
+                optional
+                    GreenMode
+            Scanner
+                mandatory
+                    ScannerType
+                        alternative
+                            BWScanner
+                            ColorScanner
+                    ScannerResolution {Integer}
+
+constraints
+    GreenMode => !PhotoPrinter
+
+//26 segs

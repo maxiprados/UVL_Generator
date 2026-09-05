@@ -1,0 +1,28 @@
+features
+    EdgeSystem
+        mandatory //Aqui el mcp la pone como mandatory, en el hecho a mano hay un or entre Interface, VNF y Antenna
+            Interface
+                or
+                    Mobile
+                        alternative
+                            "3G" {Cost 30}
+                            "4G" {Cost 40}
+                            "5G" {Cost 75}
+                    WiFi
+                    Ethernet {Cost 15}
+            VNF
+                or
+                    Monitor
+                    Firewall
+                    Encryption
+        optional
+            Antenna
+                alternative
+                    Small {Cost 3}
+                    Normal {Cost 4}
+                    Large {Cost 5}
+
+constraints
+    Ethernet => !Antenna
+
+//tiempo 20 segundos

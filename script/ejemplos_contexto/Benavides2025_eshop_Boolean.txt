@@ -1,0 +1,12 @@
+A fictitious eShop product line. 
+eShop has two mandatory and three optional child features.
+Any configuration of an eShop has to have a Catalogue and a Security option.
+A configuration of an eShop can optionally have SEO, Payment, and Platform support. 
+Exactly one Security option (Standard or High) and exactly one Payment option can be selected. 
+The Payment of the eShop must be either Bank Transfer or Credit card (but not both in the same configuration).
+Whenever Platform is selected, Mobile App, Browser or any combination thereof including at least one of these two features can be selected.
+An eShop including Credit card must include High security support.
+The Bank Transfer feature cannot be combined with a Mobile App, i.e., these two features are incompatible.
+In addition there are some attributes that provide information on the respective features.
+We have a number attribute (price), a Boolean attribute (SEPA), and a string attribute (URL):
+High 100, Standard 50, Bank Transfer 10 and SEPA, Credit Card 20, and Browser 'www.uvleshop.org'.

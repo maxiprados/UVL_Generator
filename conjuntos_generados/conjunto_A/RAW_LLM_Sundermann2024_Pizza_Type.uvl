@@ -1,0 +1,46 @@
+namespace Pizza
+
+features
+    Pizza {abstract}
+        mandatory
+            Base {price 2.0}
+            Sauce {abstract}
+                alternative
+                    Tomato {price 0.8}
+                    "Creme Fraiche" {price 1.1}
+            Cheese {abstract}
+                or
+                    Mozzarella {price 0.4}
+                    Cheddar {price 0.6}
+            Toppings {abstract}
+                [1..3]
+                    Mushrooms {price 0.5}
+                    Onion {price 0.3}
+                    Olive {price 0.3}
+                    Pineapple {price 0.8}
+            Size {Integer}
+        optional
+            DeliveryAddress {abstract}
+                [1..10]
+                    mandatory
+                        Street {String}
+                        City {String}
+
+constraints
+    // Cheddar and Creme Fraiche are mutually exclusive
+    Cheddar => !"Creme Fraiche"
+
+    // Size must be between 20 and 60 (inclusive)
+    Size >= 20 & Size <= 60
+
+    // Every configured delivery address must be in the pizza place's city
+    City == "Omashu"
+
+    // Street name is bounded in length
+    len(Street) <= 100
+
+    // Total price of the configured pizza must stay under 5
+    Base.price + Sauce.price + Cheese.price + Toppings.price < 5
+
+
+// 36 segs

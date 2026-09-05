@@ -1,0 +1,24 @@
+features
+    eShop
+        mandatory
+            Catalogue
+            Security
+                alternative
+                    Standard {price 50}
+                    High {price 100}
+        optional
+            SEO
+            Payment
+                alternative
+                    BankTransfer {price 10, SEPA true}
+                    CreditCard {price 20}
+            Platform
+                or
+                    MobileApp
+                    Browser {url 'www.uvleshop.org'}
+
+constraints
+    CreditCard => High
+    BankTransfer => !MobileApp //Igual que en el MCP_Benavides2025_eShop_Arithmetic, equivalente la expresion
+
+//tiempo -> 3 minutos 35 segundos

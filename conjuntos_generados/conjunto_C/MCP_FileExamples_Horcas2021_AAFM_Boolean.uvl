@@ -1,0 +1,26 @@
+features
+    AAFMFramework
+        mandatory
+            System
+                alternative
+                    Linux
+                    Win
+        optional
+            Packages
+                optional
+                    "python-sat"
+                    pycosat
+                    pyGlucose
+                    pyPicosat
+            Solvers
+                or
+                    MiniSAT
+                    PicoSAT
+                    Glucose
+constraints
+    MiniSAT => "python-sat"
+    PicoSAT => (pycosat | pyPicosat)
+    Glucose => ("python-sat" | pyGlucose)
+    Win => !pyPicosat
+
+//time -> 28 secs

@@ -1,0 +1,22 @@
+features
+    Pizza //Falta el abstract aunque el enunciado no dice nada de eso
+        mandatory
+            Topping
+                or
+                    Salami
+                    Ham
+                    Mozzarella
+            Size
+                alternative
+                    Normal
+                    Big
+            Dough
+                alternative
+                    Neapolitan
+                    Sicilian
+        optional
+            CheesyCrust
+constraints
+    CheesyCrust => Big
+
+//time -> 28 secs

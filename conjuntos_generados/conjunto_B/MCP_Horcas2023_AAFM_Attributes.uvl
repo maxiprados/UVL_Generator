@@ -1,0 +1,27 @@
+features
+    AAFMFramework
+        mandatory
+            System
+                alternative
+                    Linux
+                    Win
+        optional
+            Packages
+                optional //En el modelo hecho a mano, esta feature cambia por or
+                    "python-sat" {UserRating 243, LastUpdate 'Dec 4, 2021'}
+                    pycosat {UserRating 158, LastUpdate 'Nov 9, 2017'}
+                    pyGlucose {UserRating 1, LastUpdate 'Apr 14, 2019'}
+                    pyPicosat {UserRating 2, LastUpdate 'Aug 1, 2017'}
+            Solvers
+                or
+                    MiniSAT
+                    PicoSAT
+                    Glucose
+
+constraints
+    MiniSAT => "python-sat"
+    PicoSAT => (pycosat | pyPicosat)
+    Glucose => ("python-sat" | pyGlucose)
+    Win => !pyPicosat
+
+//Tiempo 1 min 40 segs

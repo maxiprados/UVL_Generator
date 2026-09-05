@@ -1,0 +1,29 @@
+features
+	eShop
+		mandatory
+			Catalogue cardinality [1..5] {price 30}
+			Security
+				alternative
+					Standard {price 50}
+					High {price 100}
+		optional
+			SEO {price 40}
+			Payment
+				alternative
+					"Bank Transfer" {price 10, SEPA true}
+					"Credit card" {price 20}
+			Platform
+				[2..3]
+					"Mobile App" {price 80}
+					Browser {price 20} //Falta String
+					"Desktop App" {price 70}
+			Integer "Items in Basket" //Cambio introducido con respecto al generado a mano - Preguntar
+
+constraints
+	"Credit card" => High
+	"Bank Transfer" => !"Mobile App"
+	"Items in Basket" > 0
+	len(Browser) <= 30
+	sum(price) < 200
+
+//tiempo -> 1 minuto 8 segundos

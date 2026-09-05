@@ -1,0 +1,27 @@
+features
+    Multifunctional
+        mandatory
+            Printer
+                mandatory
+                    PrinterType
+                        alternative
+                            BWPrinter
+                            ColorPrinter
+                            PhotoPrinter
+                    Cartridge cardinality [1..4]
+                        mandatory
+                            Integer InkVolume
+                    Integer PrinterResolution
+                optional
+                    GreenMode
+            Scanner
+                mandatory
+                    ScannerType
+                        alternative
+                            BWScanner
+                            ColorScanner
+                    Integer ScannerResolution
+constraints
+    GreenMode => !PhotoPrinter
+
+//time -> 38 secs

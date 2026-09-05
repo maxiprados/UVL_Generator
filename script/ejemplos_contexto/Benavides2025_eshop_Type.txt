@@ -1,0 +1,22 @@
+A fictitious eShop product line. 
+eShop has two mandatory and three optional child features.
+Any configuration of an eShop has to have a Catalogue and a Security option.
+A configuration of an eShop can optionally have SEO, Payment, and Platform support. 
+Exactly one Security option (Standard or High) and exactly one Payment option can be selected. 
+The Payment of the eShop must be either Bank Transfer or Credit card (but not both in the same configuration).
+Whenever Platform is selected, the customer has three Platform options to choose from: Mobile App, Browser, Desktop App.
+The customer needs to select between two and three platform features.
+An eShop including Credit card must include High security support.
+The Bank Transfer feature cannot be combined with a Mobile App, i.e., these two features are incompatible.
+In addition there are some attributes that provide information on the respective features.
+We have a number attribute (price), a Boolean attribute (SEPA), and a string attribute (URL):
+High 100, Standard 50, Bank Transfer 10 and SEPA, SEO 40, Credit Card 20, Desktop App 70, Mobile App 80, and Browser 20.
+The overall sum in price of all selected features should be smaller than 200.
+The user can decide to have between one and five Catalogue features. 
+A customer may select varying catalogues for different markets, e.g., Europe and North America. 
+Note that each selected Catalogue would increase the overall price by 30.
+The customer can now configure an integer feature Items in Basket, which can be used to limit the maximum number of
+items a customer can put in his basket at the same time. 
+A cross-tree constraint ensures that the maximum number of items is higher than zero. 
+Further, Browser is now a string feature where the URL can be directly configured. 
+Another cross-tree constraint denotes that the URL may not be longer than 30 characters.

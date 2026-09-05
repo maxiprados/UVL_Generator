@@ -1,0 +1,29 @@
+namespace eShop
+
+features
+    eShop {abstract}
+        mandatory
+            Catalogue [1..5] {price 30}
+            Security
+                alternative
+                    Standard {price 50}
+                    High {price 100}
+        optional
+            SEO {price 40}
+            Payment
+                alternative
+                    "Bank Transfer" {price 10, SEPA true}
+                    "Credit Card" {price 20}
+            Platform
+                [2..3]
+                    "Mobile App" {price 80}
+                    String Browser {price 20}
+                    "Desktop App" {price 70}
+            Integer "Items in Basket"
+
+constraints
+    "Credit Card" => High
+    "Bank Transfer" => !"Mobile App"
+    "Items in Basket" > 0
+    len(Browser) <= 30
+    sum(price) < 200

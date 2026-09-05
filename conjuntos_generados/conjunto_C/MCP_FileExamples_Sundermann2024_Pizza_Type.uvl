@@ -1,0 +1,34 @@
+features
+    Pizza
+        mandatory
+            Base {Price 2.0}
+            Sauce
+                alternative
+                    Tomato {Price 0.8}
+                    "Creme Fraiche" {Price 1.1}
+            Toppings //Los toppings son opcionales no mandatorys
+                [1..3]
+                    Mushrooms {Price 0.5}
+                    Onion {Price 0.3}
+                    Olive {Price 0.3}
+                    Pineapple {Price 0.8}
+            Integer Size
+            DeliveryAddress cardinality [1..10]
+                mandatory
+                    String Street
+                    String City
+        optional
+            Cheese
+                or
+                    Mozzarella {Price 0.4}
+                    Cheddar {Price 0.6}
+
+constraints
+    !(Cheddar & "Creme Fraiche")
+    sum(Price) < 5
+    Size >= 20
+    Size <= 60
+    len(DeliveryAddress.Street) <= 100
+    DeliveryAddress.City == 'Omashu'
+
+//time -> 45 secs

@@ -1,0 +1,32 @@
+features
+    eShop
+        mandatory
+            Catalogue //Estas opciones de catalogo medio lo inventa el LLM (es cierto que el texto dice "e.g. Europe, NorthAmerica, ...")
+                [1..5]
+                    Europe {price 30}
+                    NorthAmerica {price 30}
+                    Asia {price 30}
+                    Oceania {price 30}
+                    Africa {price 30}
+            Security
+                alternative
+                    Standard {price 50}
+                    High {price 100}
+        optional
+            SEO
+            Payment
+                alternative
+                    "Bank Transfer" {price 10, SEPA true}
+                    "Credit Card" {price 20}
+            Platform
+                [2..3]
+                    "Mobile App"
+                    Browser {URL 'www.uvleshop.org'}
+                    "Desktop App"
+
+constraints
+    "Credit Card" => High
+    "Bank Transfer" => !"Mobile App"
+    sum(price) < 200
+
+//tiempo -> 2 mins 38 secs

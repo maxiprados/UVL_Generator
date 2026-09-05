@@ -1,0 +1,25 @@
+features
+    eShop
+        mandatory
+            Catalogue
+            Security
+                alternative
+                    Standard {price 50}
+                    High {price 100}
+        optional
+            SEO
+            Payment
+                alternative
+                    BankTransfer {price 10, SEPA true}
+                    CreditCard {price 20}
+            Platform
+                [2..3]
+                    MobileApp
+                    Browser {URL 'www.uvleshop.org'}
+                    DesktopApp
+
+constraints
+    CreditCard => High
+    BankTransfer => !MobileApp
+
+//tiempo -> 3 minutos 43 segundos

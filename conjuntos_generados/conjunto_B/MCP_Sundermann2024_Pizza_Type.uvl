@@ -1,0 +1,38 @@
+namespace Pizza
+
+features
+	Pizza //falta el City Omashu
+		mandatory
+			Base {Price 2.0}
+			Sauce
+				alternative
+					Tomato {Price 0.8}
+					CremeFraiche {Price 1.1}
+			Toppings //Los topings para el MCP son obligatorios mientras que en el a mano son optional
+				[1..3]
+					Mushrooms {Price 0.5}
+					Onion {Price 0.3}
+					Olive {Price 0.3}
+					Pineapple {Price 0.8}
+			Integer Size
+			Delivery //Estructura diferente el feature de la direccion
+				mandatory
+					Address cardinality [1..10]
+						mandatory
+							String Street
+							String City
+		optional
+			Cheeses
+				or
+					Mozzarella {Price 0.4}
+					Cheddar {Price 0.6}
+
+constraints
+	Cheddar => !CremeFraiche
+	sum(Price) < 5
+	Size >= 20
+	Size <= 60
+	len(Street) <= 100
+	City == "Omashu"
+
+//tiempo 57 segundos

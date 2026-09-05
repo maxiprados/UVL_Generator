@@ -1,0 +1,32 @@
+namespace EdgeSystem
+
+features
+    Edge
+        mandatory
+            Interface
+                or
+                    Mobile
+                        mandatory
+                            Band
+                                alternative
+                                    "3G" {Cost 30}
+                                    "4G" {Cost 40}
+                                    "5G" {Cost 75}
+                    WiFi
+                    Ethernet {Cost 15}
+            VNF
+                or
+                    Monitor
+                    Firewall
+                    Encryption
+        optional
+            Antenna
+                alternative
+                    Small {Cost 3}
+                    Normal {Cost 4}
+                    Large {Cost 5}
+
+constraints
+    Ethernet => !Antenna
+
+// 30 segs - Sin fallos 
